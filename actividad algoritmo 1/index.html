@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabla de Datos</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<input type="number" id="datoGenero" class="datouser">
+<input type="number" id="dato1" class="datouser">
+<input type="number" id="dato2" class="datouser">
+<input type="number" id="dato3" class="datouser">
+<input type="number" id="dato4" class="datouser">
+<input type="number" id="dato5" class="datouser">
+<input type="number" id="dato6" class="datouser">
+<input type="number" id="dato7" class="datouser">
+
+
+<button onclick="agregarDato()">Agregar Datos</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genero</th>
+      <th>Dia 1</th>
+      <th>Dia 2</th>
+      <th>Dia 3</th>
+      <th>Dia 4</th>
+      <th>Dia 5</th>
+      <th>Dia 6</th>
+      <th>Dia 7</th>
+    </tr>
+  </thead>
+  <tbody id="cuerpoTabla">
+    <tr>
+      <td id="primerDato">-</td>
+      <td id="dia1"></td>
+      <td id="dia2"></td>
+      <td id="dia3"></td>
+      <td id="dia4"></td>
+      <td id="dia5"></td>
+      <td id="dia6"></td>
+      <td id="dia7"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+let datos = [];
+let sumaDiferencias = 0;
+
+function agregarDato() {
+  let dato = parseInt(document.getElementsByClassName("datouser").values);
+  if (dato != 0) {
+    datos.push(dato);
+    actualizarTabla();
+  } else {
+    alert("Por favor, ingrese un datos válidos.");
+  }
+}
+
+function actualizarTabla() {
+  let tabla = document.getElementById("cuerpoTabla");
+  tabla.innerHTML = "";
+  sumaDiferencias = 0;  
+  
+  for (let i = 0; i < datos.length; i++) {
+    let fila = document.createElement("tr");
+    let dato = document.createElement("td");
+    let diferencia = document.createElement("td");
+    
+    dato.textContent = datos[i];
+
+    
+    fila.appendChild(dato);
+    tabla.appendChild(fila);
+  }
+  
+}
+</script>
+
+</body>
+</html>
